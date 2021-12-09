@@ -14,6 +14,8 @@ public:
 
     uint32_t nyears;
     uint32_t nseasons;
+    double increment;
+    
     double first_age;
     double last_age;
 
@@ -38,7 +40,6 @@ public:
         }
         std::cout << std::endl;
     }
-
 };
 
 class TimeStepPrototype_2 {
@@ -54,7 +55,8 @@ public:
     double first_age;
     double last_age;
 
-    TimeStepPrototype_2(std::map<uint32_t, std::vector<double> > data_time_snapshot, double first_age, double last_age) :
+    TimeStepPrototype_2(std::map<uint32_t, std::vector<double> > data_time_snapshot, 
+    double first_age, double last_age) :
     first_age(first_age), last_age(last_age) {
 
         this->nyears = data_time_snapshot.size();
@@ -97,26 +99,40 @@ public:
 
 };
 
+
 int main(int argc, char** argv) {
 
-    std::cout << "EXAMPLE 1\n\n";
-    TimeStepPrototype_1 example1(10, 3, 0, 7);
+    std::map<uint32_t, std::vector<double> > data_driven_timestamps1;
+    std::map<uint32_t, std::vector<double> > data_driven_timestamps2;
 
-    std::map<uint32_t, std::vector<double> > data_driven_timestamps;
+    data_driven_timestamps1[0] = {.3333, .6666};
+    data_driven_timestamps1[1] = {.3333, .6666};
+    data_driven_timestamps1[2] = {.3333, .6666};
+    data_driven_timestamps1[3] = {.3333, .6666};
+    data_driven_timestamps1[4] = {.3333, .6666};
+    data_driven_timestamps1[5] = {.3333, .6666};
+    data_driven_timestamps1[5] = {.3333, .6666};
+    data_driven_timestamps1[6] = {.3333, .6666};
+
+    //data driven timestamps
+    data_driven_timestamps2[0] = {.3333, .6666};
+    data_driven_timestamps2[1] = {.5};
+    data_driven_timestamps2[2] = {.25, .5, .75};
+    data_driven_timestamps2[3] = {.3333, .6666};
+    data_driven_timestamps2[4] = {.25};
+    data_driven_timestamps2[5] = {.3333};
+    data_driven_timestamps2[5] = {.6666};
+    data_driven_timestamps2[6] = {.5};
+
+    std::cout << "EXAMPLE 1\n\n";
+    TimeStepPrototype_1 example1(7, 3, 1, 7);
+    TimeStepPrototype_2 example1_2(data_driven_timestamps1, 1, 7);
 
 
     std::cout << "\n\nEXAMPLE 2\n\n";
-    //data driven timestamps
-    data_driven_timestamps[0] = {.3333, .6666};
-    data_driven_timestamps[1] = {.5};
-    data_driven_timestamps[2] = {.25, .5, .75};
-    data_driven_timestamps[3] = {.3333, .6666};
-    data_driven_timestamps[4] = {.25};
-    data_driven_timestamps[5] = {.3333};
-    data_driven_timestamps[5] = {.6666};
-    data_driven_timestamps[6] = {.5};
+    TimeStepPrototype_1 example2(7, 3, 1, 7);
+    TimeStepPrototype_2 example2_2(data_driven_timestamps2, 1, 7);
 
-    TimeStepPrototype_2 example2(data_driven_timestamps, 1, 7);
 
     return 0;
 }
