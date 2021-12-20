@@ -162,7 +162,7 @@ public:
 
     }
 
-    void evaulate_subpopulations() {
+    void evaluate_subpopulations() {
 
         for (size_t i = 0; i < this->nsexes_; i++) {
             std::vector<std::shared_ptr<subpopulation> >&
@@ -210,7 +210,7 @@ int main(int argc, char** argv) {
 
     population pop(years, seasons, ages.size(), ages);
     pop.initialize_subpopulations(2, areas);
-    pop.evaulate_subpopulations();
+    pop.evaluate_subpopulations();
     pop.finalize();
 
     return 0;
