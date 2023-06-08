@@ -89,7 +89,7 @@ server <- function(input, output) {
         }
 
         # draw the plot with population ages
-     plot(population_ages, col = 'darkgray', ylab= "age", ylim=c(0,input$endage))
+     plot(population_ages, col = '#a9a9a9', ylab= "age", ylim=c(0,input$endage))
     })
 }
 
